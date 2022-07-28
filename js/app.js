@@ -6,11 +6,20 @@ const Cart = function(items) {
   this.items = items;
 };
 
+// this is a helper function to instantiate a CartItem
+// and add it to an array??
 Cart.prototype.addItem = function(product, quantity) {
-  // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  // DONE: Fill in this instance method to create a new CartItem and add it to this.items
+
+  // make a new cartItem
+  let cartItem = new CartItem(product, quantity);
+
+  // push cartItem to array in Cart object
+  this.items.push(cartItem);
 };
 
-Cart.prototype.saveToLocalStorage = function() {
+Cart.prototype.saveToLocalStorage = function() 
+{
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
 };
 
@@ -24,7 +33,7 @@ const CartItem = function(product, quantity) {
   this.quantity = quantity;
 };
 
-// Product contructor.
+// Product constructor.
 const Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;

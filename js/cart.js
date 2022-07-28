@@ -7,7 +7,11 @@ table.addEventListener('click', removeItemFromCart);
 let cart;
 
 function loadCart() {
+  // cartItems is an array of CartItem objects
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // cart is an instance of Cart object
+  // Cart object has a property that in an array of CartItems
   cart = new Cart(cartItems);
 }
 
@@ -19,10 +23,17 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() 
+{
+  // nameOfTheTable.innerHTML(a way to delete it??)
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+
+  // 1. make a table
+  // 2. table has 3 columns: itemName, quantity, and 'x' to remove the item from the cart
+  // 3. each row is an item + quantity
 
   // TODO: Find the table body
 

@@ -11,10 +11,21 @@ function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
-  for (let i in Product.allProducts) {
+  for (let i in Product.allProducts) 
+  {
+    // create <option> element
+    let option = document.createElement('option');
 
+    // give content
+    // we want the content to be the name of the product
+    option.textContent = Product.allProducts[i].name;
+
+    // give value property and fill it with option name in HTML
+    option.value = Product.allProducts[i].name;
+
+    // append to DOM @ element with 'items' tag
+    selectElement.appendChild(option);
   }
-
 }
 
 // When someone submits the form, we need to add the selected item to the cart
@@ -22,7 +33,8 @@ function populateForm() {
 // so that it shows the # of items in the cart and a quick preview of the cart itself.
 function handleSubmit(event) {
 
-  // TODO: Prevent the page from reloading
+  // DONE: Prevent the page from reloading
+  event.preventDefault();
 
   // Do all the things ...
   addSelectedItemToCart();
@@ -32,19 +44,55 @@ function handleSubmit(event) {
 
 }
 
-// TODO: Add the selected item and quantity to the cart
+// DONE: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  // TODO: suss out the item picked from the select list
-  // TODO: get the quantity
-  // TODO: using those, add one item to the Cart
+  // DONE: suss out the item picked from the select list
+
+  // get DOM element with the name of the selected item from the dropdown menu
+  let itemPicked = document.querySelector('select').value;
+  // DONE: get the quantity
+
+  let quantityPicked = document.querySelector('input:nth-of-type(1)').value;
+
+  // DONE: using those, add one item to the Cart
+  cart.addItem(itemPicked, quantityPicked);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() { }
+function updateCounter() 
+{
+  // get the <span> in the <nav> in the <header>
+  let itemCountSpan = document.querySelector('span')
+
+  // update <span> in <nav> with number of unique items in cart
+  itemCountSpan.textContent = cart.items.length;
+
+  /*
+  let cartCounter = 0;
+
+  for (let i = 0; i < cart.items.length; i++)
+  {
+    
+    let currentCartItemsQuantity = cart.items[i].quantity;
+  }
+  // traverse through the cart
+  // look for items
+  // get the quantityPicked property
+  // add to total (cartCounter)
+  */
+
+
+  // update in header nav
+  // change .textContent of <span> in header to the value of cartCounter 
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
-function updateCartPreview() {
+function updateCartPreview() 
+{
   // TODO: Get the item and quantity from the form
+
+
+
   // TODO: Add a new element to the cartContents div with that information
 }
 
