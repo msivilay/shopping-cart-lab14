@@ -10,6 +10,7 @@ function loadCart() {
   // cartItems is an array of CartItem objects
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
+  console.log(cartItems);
   // cart is an instance of Cart object
   // Cart object has a property that in an array of CartItems
   cart = new Cart(cartItems);
@@ -22,13 +23,18 @@ function renderCart() {
   showCart();
 }
 
-// TODO: Remove all of the rows (tr) in the cart table (tbody)
+// DONE: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() 
 {
   // nameOfTheTable.innerHTML(a way to delete it??)
+let tbody = document.querySelector('tbody');
+  tbody.innerHTML = '';
+
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
+
+
 function showCart() {
 
   // 1. make a table
@@ -37,7 +43,25 @@ function showCart() {
 
   // TODO: Find the table body
 
+  let tbody = document.querySelector('tbody');
+
   // TODO: Iterate over the items in the cart
+
+   for (let i=0; i<cart.items.length; i++){
+     let tr = document.createElement('tr');
+     tbody.appendChild(tr);
+
+     let td = document.createElement ('td');
+     td.textContent = cart.items[i].product;
+
+     tr.appendChild(td);
+
+    td = document.createElement('td');
+    td.textContent = cart.items[i].quantity;
+
+    tr.appendChild(td);
+    }
+
   // TODO: Create a TR
   // TODO: Create a TD for the delete link, quantity,  and the item
   // TODO: Add the TR to the TBODY and each of the TD's to the TR

@@ -9,7 +9,7 @@ const cart = new Cart([]);
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
 
-  //TODO: Add an <option> tag inside the form's select for each product
+  //DONE: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) 
   {
@@ -58,7 +58,8 @@ function addSelectedItemToCart() {
   cart.addItem(itemPicked, quantityPicked);
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
+// DONE: Update the cart count in the header nav with the number of items in the Cart
+
 function updateCounter() 
 {
   // get the <span> in the <nav> in the <header>
@@ -86,15 +87,24 @@ function updateCounter()
   // change .textContent of <span> in header to the value of cartCounter 
 }
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// DONE: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() 
 {
-  // TODO: Get the item and quantity from the form
+  // DONE: Get the item and quantity from the form
 
+  let itemPicked = document.querySelector('select').value;
+ 
+  let quantityPicked = document.querySelector('input:nth-of-type(1)').value;
 
+  let cartPreviewDiv = document.querySelector('div:last-child');
 
   // TODO: Add a new element to the cartContents div with that information
-}
+
+  let p = document.createElement ('p');
+  p.textContent = `${itemPicked}: ${quantityPicked}`;
+  cartPreviewDiv.appendChild(p);
+ 
+} 
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
